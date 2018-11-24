@@ -1,6 +1,5 @@
 import os
 import psycopg2
-from config import config
 from uuid import UUID
 from flask import Flask, jsonify
 from flask import abort
