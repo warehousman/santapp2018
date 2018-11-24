@@ -1,5 +1,7 @@
+import os
 import psycopg2
-from config import config
+
+params = {'host': os.environ.get('HOST'), 'database': os.environ.get('DB'), 'user': os.environ.get('USER'), 'password': os.environ.get('PASS'), 'port': '5432'}
 
 def create_tables():
     command="""
@@ -15,7 +17,6 @@ def create_tables():
         
     conn = None
     try:
-        params = config()
         conn = psycopg2.connect(**params)
         cur = conn.cursor()
         cur.execute(command)
